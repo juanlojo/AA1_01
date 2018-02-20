@@ -7,10 +7,7 @@ string arr[5] = { "Hipolito", "Fulgencia", "Pancracia", "Eustaquio", "Jose" };
 
 //1)
 
-enum EnemyType
-{
-	zombie, vampire, ghost, witch
-};
+enum EnemyType {zombie, vampire, ghost, witch};
 
 //2)
 
@@ -50,7 +47,23 @@ Enemy createRandomEnemy()
 
 //5)
 
-int getEnemyTypeString(EnemyType)
+string getEnemyTypeString(EnemyType enemy1)
 {
-	
+	switch (EnemyType)
+	{
+	case zombie:
+		return "zombie";
+		break;
+	case vampire:
+		return "vampire";
+		break;
+	case ghost:
+		return "ghost";
+		break;
+	case witch:
+		return "witch";
+		break;
+	default:
+		break;
+	}
 }
