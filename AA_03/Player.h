@@ -1,4 +1,5 @@
 #pragma once
+#include "Board.h"
 
 struct Vec2 {
 	int x;

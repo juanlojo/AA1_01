@@ -1,6 +1,13 @@
 ﻿#pragma once
+#include "Player.h"
+
 const int NUM_ROWS = 10;
 const int NUM_COLUMNS = 10;
+
+enum class Movement { UP, DOWN, LEFT, RIGHT };
+
+enum CharName { NONE, PLAYER, STONE, COIN };
+char g_CharCode[4] = { ' ', '@', 'X','$' };
 
 struct Board
 {
