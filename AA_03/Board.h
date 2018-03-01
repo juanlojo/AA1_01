@@ -1,48 +1,6 @@
 ﻿#pragma once
-#include <Board.h>
-#include <Player.h>
-#include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-
 const int NUM_ROWS = 10;
 const int NUM_COLUMNS = 10;
-
-//1
-enum class Movement { UP, DOWN, LEFT, RIGHT };
-
-enum CharName { NONE, PLAYER, STONE, COIN };
-char g_CharCode[4] = { ' ', '@', 'X','$' };
-
-struct Vec2
-{
-	int x;
-	int y;
-};
-
-//3
-struct Player
-{
-	Vec2 position;
-	int score;
-
-	Player() : position({ 0, 0 }), score() {};
-	Player(Vec2 pos) : position(pos), score(0) {};
-
-	inline void printScore() {
-		std::cout << "---- Score: " << score << " ----" << std::endl;
-		std::cout << "X->" << position.x << " // Y->" << position.y << std::endl;
-	}
-
-	//6 
-	inline void updateScore(int points) { score += points; }
-
-	//7
-	void setPos(Vec2 pos) {
-		position = pos;
-	}
-};
 
 struct Board
 {
@@ -175,48 +133,3 @@ struct Board
 		return count == 0;
 	};
 };
-
-
-//12
-int main(int, char *[])
-{
-	srand(time(NULL));
-
-	Player player = Player();
-	Board board = Board(player);
-
-	char c = ' ';
-
-	while (c != 'x' && !board.gameOver())
-	{
-		system("cls");
-		player.printScore();
-		board.printBoard();
-
-		std::cin >> c;
-
-		Movement move;
-		switch (c)
-		{
-		case 'w': move = Movement::UP;
-			break;
-		case 's': move = Movement::DOWN;
-			break;
-		case 'a': move = Movement::LEFT;
-			break;
-		case 'd': move = Movement::RIGHT;
-			break;
-		default:
-			return 0;
-		};
-
-		if (board.checkMovement(player.position, move))
-		{
-			if (board.existCoin(player.position, move)) { player.updateScore(1); };
-			board.movePlayer(player.position, move);
-		};
-
-	}
-
-	return 0;
-}
