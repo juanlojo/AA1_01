@@ -129,7 +129,7 @@ struct Board
 
 	}
 
-	//10  Una funci�n gameOver que verifica si en el tablero no quedan monedas
+	//10  Una función gameOver que verifica si en el tablero no quedan monedas
 	bool gameOver() {
 		int count{ 0 };
 		for (int i = 1; i<NUM_ROWS; i++)
