@@ -3,36 +3,36 @@
 
 DynArray::DynArray()
 {
-	int* defaultArray = new int[DYN_ARRAY_DEFAULT_SIZE];
-	DynArray::m_capacity = 8;
+	data = new int[DYN_ARRAY_DEFAULT_SIZE];
+	DynArray::m_capacity = DYN_ARRAY_DEFAULT_SIZE;
 	DynArray::m_size = 0;
 }
 
 DynArray::DynArray(size_t size)
 {
-	int* definedArray = new int[size];
+	data = new int[size];
 	DynArray::m_capacity = size;
 	DynArray::m_size = 0;
 }
 
 DynArray::DynArray(size_t size, const int & value)
 {
-	int* definedArray = new int[size];
+	data = new int[size];
 	DynArray::m_size = size;
 	DynArray::m_capacity = size;
 	for (int i = 0; i < size; i++) {
-		definedArray[i] = value;
+		data[i] = value;
 	}
 }
 
 int * DynArray::begin()
 {
-	return nullptr;
+	return &data[0];
 }
 
 int * DynArray::end()
 {
-	return nullptr;
+	return &data[m_size - 1];
 }
 
 void DynArray::resize(size_t n)
